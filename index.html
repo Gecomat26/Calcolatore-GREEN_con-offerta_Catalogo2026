@@ -1815,6 +1815,11 @@
         <h2>Composizione Offerta</h2>
         
         <div class="form-group">
+          <label for="offerta-cliente-utilizzatore">Nome Cliente Utilizzatore</label>
+          <input type="text" id="offerta-cliente-utilizzatore" placeholder="Es. Rossi Costruzioni S.r.l.">
+        </div>
+
+        <div class="form-group">
           <label for="offerta-potenza-ftv">Potenza FTV (kWp)</label>
           <input type="text" id="offerta-potenza-ftv" placeholder="Es. 6.6">
         </div>
@@ -3120,6 +3125,9 @@ La presente quotazione ha valore puramente indicativo ed è soggetta ad approvaz
     const clienteNome = el('cliente-name')?.value?.trim() || 'Cliente';
     const dataPreventivo = el('data-preventivo')?.value || new Date().toISOString().split('T')[0];
     
+    // Nome Cliente Utilizzatore per l'Offerta
+    const clienteUtilizzatore = el('offerta-cliente-utilizzatore')?.value?.trim() || 'Da compilare';
+    
     // Dati del Fornitore con valori di default
     const nomeFornitore = el('offerta-nome-fornitore')?.value?.trim() || 'PARERINO SRL';
     const indirizzoFornitore = el('offerta-indirizzo-fornitore')?.value?.trim() || 'Via Paperopoli, 8 - Roma (RM)';
@@ -3180,7 +3188,7 @@ La presente quotazione ha valore puramente indicativo ed è soggetta ad approvaz
       <div class="offerta-oggetto">
         <strong>OGGETTO:</strong> Offerta Beni per Locazione Operativa per:<br>
         • Impianto fotovoltaico${potenzaFtv ? ` da <strong>${potenzaFtv} kWp</strong>` : ''}${kWhBatteria ? ` + <strong>${kWhBatteria} kWh</strong> di batteria` : ''} ed accessori<br>
-        • Verso il cliente <strong>${clienteNome}</strong><br>
+        • Verso il cliente <strong>${clienteUtilizzatore}</strong><br>
         ${proprietarioImmobile ? `• Proprietario immobile oggetto dell'installazione: <strong>${proprietarioImmobile}</strong><br>` : ''}
         ${luogoInstallazione ? `• Luogo di installazione: <strong>${luogoInstallazione}</strong>` : ''}
       </div>
@@ -3266,7 +3274,7 @@ La presente quotazione ha valore puramente indicativo ed è soggetta ad approvaz
   }
 
   // Event listeners per i campi
-  ['offerta-potenza-ftv', 'offerta-kWh-batteria', 'offerta-marca-pannelli', 'offerta-marca-inverter',
+  ['offerta-cliente-utilizzatore', 'offerta-potenza-ftv', 'offerta-kWh-batteria', 'offerta-marca-pannelli', 'offerta-marca-inverter',
    'offerta-marca-batteria', 'offerta-acc-struttura', 'offerta-acc-quadri', 'offerta-acc-collegamenti',
    'offerta-pensilina', 'offerta-cci', 'offerta-include-batteria', 'offerta-desc-pensilina', 'offerta-desc-cci-aggiuntiva', 
    'offerta-prezzo-ftv', 'offerta-prezzo-batteria', 'offerta-prezzo-pensiline', 'offerta-prezzo-cci',
