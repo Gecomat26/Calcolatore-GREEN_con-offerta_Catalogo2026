@@ -1896,7 +1896,7 @@
           </label>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="offerta-desc-pensilina-group" style="display:none;">
           <label for="offerta-desc-pensilina">Descrizione Pensilina</label>
           <input type="text" id="offerta-desc-pensilina" placeholder="Es. Struttura e installazione">
         </div>
@@ -1925,14 +1925,15 @@
           <input type="text" id="offerta-prezzo-batteria" placeholder="0,00">
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="offerta-prezzo-pensiline-group" style="display:none;">
           <label for="offerta-prezzo-pensiline">Prezzo Pensiline + IVA (€)</label>
           <input type="text" id="offerta-prezzo-pensiline" placeholder="0,00">
         </div>
 
         <div class="form-group" id="offerta-prezzo-cci-group" style="display:none;">
           <label for="offerta-prezzo-cci">Prezzo CCI + IVA (€)</label>
-          <input type="text" id="offerta-prezzo-cci" placeholder="0,00">
+          <small style="color: var(--amber-600); font-weight: 500; display: block; margin-bottom: 6px;">Max 18.000 €</small>
+          <input type="text" id="offerta-prezzo-cci" placeholder="0,00" data-max="18000">
         </div>
 
         <div class="form-group">
@@ -3292,6 +3293,47 @@ La presente quotazione ha valore puramente indicativo ed è soggetta ad approvaz
     const prezzoGroup = el('offerta-prezzo-cci-group');
     if (prezzoGroup) {
       prezzoGroup.style.display = el('offerta-cci').checked ? 'block' : 'none';
+    }
+    updatePreview();
+  });
+
+  // Validazione Prezzo CCI: massimo 18.000 euro
+  el('offerta-prezzo-cci')?.addEventListener('input', () => {
+    const field = el('offerta-prezzo-cci');
+    let value = field.value.replace(/\./g, '').replace(',', '.');
+    value = parseFloat(value) || 0;
+    
+    if (value > 18000) {
+      field.value = '18000';
+      alert('⚠️ LIMITE MASSIMO\n\nIl prezzo CCI non può superare € 18.000.\n\nIl valore è stato corretto a € 18.000.');
+      field.focus();
+    }
+  });
+
+  el('offerta-prezzo-cci')?.addEventListener('blur', () => {
+    const field = el('offerta-prezzo-cci');
+    if (field.value === '') return;
+    
+    let value = field.value.replace(/\./g, '').replace(',', '.');
+    value = parseFloat(value) || 0;
+    
+    if (value > 18000) {
+      field.value = '18000';
+    }
+    updatePreview();
+  });
+
+  // Toggle visibilità campi Pensilina
+  el('offerta-pensilina')?.addEventListener('change', () => {
+    const descGroup = el('offerta-desc-pensilina-group');
+    const prezzoGroup = el('offerta-prezzo-pensiline-group');
+    const isChecked = el('offerta-pensilina').checked;
+    
+    if (descGroup) {
+      descGroup.style.display = isChecked ? 'block' : 'none';
+    }
+    if (prezzoGroup) {
+      prezzoGroup.style.display = isChecked ? 'block' : 'none';
     }
     updatePreview();
   });
