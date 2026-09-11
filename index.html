@@ -167,18 +167,20 @@
   
   /* ---------- Mode switch ---------- */
   .mode-switch{
-    max-width:1120px;
-    margin:18px auto 0;
-    padding:0 20px;
     display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:24px;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:16px;
+    padding:0 20px;
+    margin:18px auto 0;
+    width:100%;
+    max-width:1160px;
+    box-sizing:border-box;
   }
   @media (max-width:900px){
-    .mode-switch{grid-template-columns:1fr 1fr 1fr; gap:16px;}
+    .mode-switch{gap:12px; padding:0 16px;}
   }
   @media (max-width:560px){
-    .mode-switch{grid-template-columns:1fr 1fr 1fr; gap:12px;}
+    .mode-switch{gap:10px; padding:0 12px;}
   }
   .mode-card{
     display:flex;
@@ -189,8 +191,9 @@
     background:var(--card);
     border:1.5px solid var(--line);
     border-radius:12px;
-    padding:14px 16px;
+    padding:14px 12px;
     min-height:76px;
+    min-width:0;
     cursor:pointer;
     transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
     font-family:'Inter', sans-serif;
@@ -1315,14 +1318,17 @@
     </div>
   </div>
   <p class="subtitle" id="page-subtitle">Calcola in tempo reale il canone per il prodotto FTV (Beni Fonti Verdi Mobiliari) e condividi la quotazione con il cliente.</p>
-  <span class="rate-note"><span class="dot"></span> <span id="rate-note-text">Parametri di tasso aggiornati al 28/05/2026</span></span>
+  <span class="rate-note"><span class="dot"></span> <span id="rate-note-text">Parametri di tasso aggiornati al 28/05/2026</span></span><br>
+  <span class="rate-note" style="margin-left: 0;">Catalogo 2026</span>
 </header>
 
 <div class="disclaimer">
   <span class="disclaimer-title">Disclaimer:</span> Il presente tool è di proprietà di GECO SRL, ad uso esclusivo dei destinatari autorizzati da GECO SRL. È vietata la diffusione, copia, pubblicazione o condivisione a soggetti terzi non autorizzati. I dati sono confidenziali e i calcoli hanno valore indicativo non vincolante.
 </div>
 
+</div>
 
+<div class="mode-switch">
   <button type="button" class="mode-card active" data-mode="leasing">
     <span class="ic">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M3 12h18"/></svg>
