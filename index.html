@@ -175,23 +175,22 @@
     gap:24px;
   }
   @media (max-width:900px){
-    .mode-switch{grid-template-columns:1fr 1fr; gap:16px;}
+    .mode-switch{grid-template-columns:1fr 1fr 1fr; gap:16px;}
   }
   @media (max-width:560px){
-    .mode-switch{grid-template-columns:1fr; gap:12px;}
-  }
-  @media (max-width:560px){
-    .mode-switch{grid-template-columns:1fr;}
+    .mode-switch{grid-template-columns:1fr 1fr 1fr; gap:12px;}
   }
   .mode-card{
     display:flex;
     align-items:center;
+    justify-content:flex-start;
     gap:12px;
     text-align:left;
     background:var(--card);
     border:1.5px solid var(--line);
     border-radius:12px;
     padding:14px 16px;
+    min-height:76px;
     cursor:pointer;
     transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
     font-family:'Inter', sans-serif;
@@ -1323,23 +1322,7 @@
   <span class="disclaimer-title">Disclaimer:</span> Il presente tool è di proprietà di GECO SRL, ad uso esclusivo dei destinatari autorizzati da GECO SRL. È vietata la diffusione, copia, pubblicazione o condivisione a soggetti terzi non autorizzati. I dati sono confidenziali e i calcoli hanno valore indicativo non vincolante.
 </div>
 
-<!-- Quote Metadata Section -->
-<div class="quote-metadata">
-  <div class="metadata-field">
-    <label for="cliente-name">Nome Cliente</label>
-    <input type="text" id="cliente-name" placeholder="Es. Acme S.r.l.">
-  </div>
-  <div class="metadata-field">
-    <label for="fornitore-name">Nome Fornitore</label>
-    <input type="text" id="fornitore-name" placeholder="Es. Il Fornitore S.p.A.">
-  </div>
-  <div class="metadata-field">
-    <label for="data-preventivo">Data Preventivo</label>
-    <input type="date" id="data-preventivo">
-  </div>
-</div>
 
-<div class="mode-switch" id="mode-switch">
   <button type="button" class="mode-card active" data-mode="leasing">
     <span class="ic">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M3 12h18"/></svg>
@@ -1367,6 +1350,22 @@
       <span class="dd">da utilizzare per costruire offerta di Locazione Operativa per l'ente deliberante (opzionale)</span>
     </span>
   </button>
+</div>
+
+<!-- Quote Metadata Section -->
+<div class="quote-metadata">
+  <div class="metadata-field">
+    <label for="cliente-name">Nome Cliente</label>
+    <input type="text" id="cliente-name" placeholder="Es. Acme S.r.l.">
+  </div>
+  <div class="metadata-field">
+    <label for="fornitore-name">Nome Fornitore</label>
+    <input type="text" id="fornitore-name" placeholder="Es. Il Fornitore S.p.A.">
+  </div>
+  <div class="metadata-field">
+    <label for="data-preventivo">Data Preventivo</label>
+    <input type="date" id="data-preventivo">
+  </div>
 </div>
 
 <main>
@@ -1518,19 +1517,19 @@
                   <td>IRS (%)</td>
 
                   <!-- CAMBIA QUI: IRS a 3 anni -->
-                  <td><input type="number" class="note-input" id="note-irs-3" step="0.001" value="2.73"></td>
+                  <td><input type="number" class="note-input" id="note-irs-3" step="0.001" value="3.12"></td>
 
                   <!-- CAMBIA QUI: IRS a 4 anni -->
-                  <td><input type="number" class="note-input" id="note-irs-4" step="0.001" value="2.74"></td>
+                  <td><input type="number" class="note-input" id="note-irs-4" step="0.001" value="3.14"></td>
 
                   <!-- CAMBIA QUI: IRS a 5 anni -->
-                  <td><input type="number" class="note-input" id="note-irs-5" step="0.001" value="2.75"></td>
+                  <td><input type="number" class="note-input" id="note-irs-5" step="0.001" value="3.16"></td>
 
                   <!-- CAMBIA QUI: IRS a 6 anni -->
-                  <td><input type="number" class="note-input" id="note-irs-6" step="0.001" value="2.78"></td>
+                  <td><input type="number" class="note-input" id="note-irs-6" step="0.001" value="3.18"></td>
 
                   <!-- CAMBIA QUI: IRS a 7 anni -->
-                  <td><input type="number" class="note-input" id="note-irs-7" step="0.001" value="2.81"></td>
+                  <td><input type="number" class="note-input" id="note-irs-7" step="0.001" value="3.21"></td>
                 </tr>
 
                 <!-- ============================================================ -->
@@ -1543,19 +1542,19 @@
                   <td>Euribor 3M (%)</td>
 
                   <!-- CAMBIA QUI: Euribor 3M (colonna 3 anni) -->
-                  <td><input type="number" class="note-input" id="note-eur-3" step="0.001" value="2.35"></td>
+                  <td><input type="number" class="note-input" id="note-eur-3" step="0.001" value="2.6087"></td>
 
                   <!-- CAMBIA QUI: Euribor 3M (colonna 4 anni) -->
-                  <td><input type="number" class="note-input" id="note-eur-4" step="0.001" value="2.35"></td>
+                  <td><input type="number" class="note-input" id="note-eur-4" step="0.001" value="2.6087"></td>
 
                   <!-- CAMBIA QUI: Euribor 3M (colonna 5 anni) -->
-                  <td><input type="number" class="note-input" id="note-eur-5" step="0.001" value="2.35"></td>
+                  <td><input type="number" class="note-input" id="note-eur-5" step="0.001" value="2.6087"></td>
 
                   <!-- CAMBIA QUI: Euribor 3M (colonna 6 anni) -->
-                  <td><input type="number" class="note-input" id="note-eur-6" step="0.001" value="2.35"></td>
+                  <td><input type="number" class="note-input" id="note-eur-6" step="0.001" value="2.6087"></td>
 
                   <!-- CAMBIA QUI: Euribor 3M (colonna 7 anni) -->
-                  <td><input type="number" class="note-input" id="note-eur-7" step="0.001" value="2.35"></td>
+                  <td><input type="number" class="note-input" id="note-eur-7" step="0.001" value="2.6087"></td>
                 </tr>
               </tbody>
             </table>
@@ -1568,7 +1567,7 @@
           <!-- ============================================================ -->
           <div class="field full" style="margin-top:14px;">
             <label for="note-riferimento">Nota sul periodo di riferimento (visibile agli utenti in alto nella pagina)</label>
-            <input type="text" id="note-riferimento" value="IRS: media mensile di giugno 2026 · Euribor 3M: rilevazione del 29/06/2026">
+            <input type="text" id="note-riferimento" value="IRS: media mensile di agosto 2026 · Euribor 3M: rilevazione del 10/09/2026">
           </div>
           <div class="hint" style="margin-top:8px;">
             Questi valori non vengono salvati automaticamente: se la pagina viene ricaricata o il file rinviato, tornano ai valori scritti nel file. Aggiornare qui in occasione di ogni modifica e ridistribuire il file, oppure ospitarlo in un'unica posizione condivisa.
